@@ -2,6 +2,8 @@ package nxt.perfume;
 
 import nxt.perfume.constants.RoleConst;
 import nxt.perfume.entity.Account;
+import nxt.perfume.socket.SocketIORegistrar;
+import nxt.perfume.socket.SocketIOServerConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,6 +19,12 @@ public class PerfumeApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PerfumeApplication.class, args);
+
+
+		SocketIOServerConfig serverConfig = new SocketIOServerConfig("0.0.0.0",
+				"8089",
+				"/ws");
+		serverConfig.start();
 	}
 
 	@Override
